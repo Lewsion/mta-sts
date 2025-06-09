@@ -4,7 +4,7 @@
 version: STSv1
 # Policy version. Always 'STSv1' as per RFC 8461.
 
-mode: testing
+mode: enforce
 # Policy mode. Possible values:
 #   enforce  - Enforce the policy (recommended for production)
 #   testing  - Report violations but do not enforce (use for testing)
