@@ -1,7 +1,21 @@
+# MTA-STS Policy File for lewsion.com
+# For more information, see: https://tools.ietf.org/html/rfc8461
+
 version: STSv1
-mode: [enforce|testing|none] # 1. Decide your mode.
-mx: mx1.your_domain.tld      # 2. Add your primary mailserver hostname (see MX records in your DNS)
-mx: mx2.your_domain.tld      # 3. If you have secondary mailservers, add one line for each.
-                             #    In case all servers share the same subdomain, you may also use wildcards like *.mail.protection.outlook.com
-max_age: 1209600             # 4. Depending on your mode above, 1209600 seconds = 2 weeks might be a good value.
-                             # 5. Remove all the comments (if that wasn't obvious to you).
+# Policy version. Always 'STSv1' as per RFC 8461.
+
+mode: testing
+# Policy mode. Possible values:
+#   enforce  - Enforce the policy (recommended for production)
+#   testing  - Report violations but do not enforce (use for testing)
+#   none     - Disable MTA-STS
+
+mx: mail.lewsion.com
+# Primary mail server hostname (must match your DNS MX records).
+# Add additional 'mx:' lines for each secondary mail server if needed.
+# Example:
+# mx: mx2.lewsion.com
+
+max_age: 1209600
+# Policy lifetime in seconds (e.g., 1209600 = 14 days).
+# Increase for production, decrease for testing.

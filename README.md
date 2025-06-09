@@ -42,7 +42,7 @@ In case the sending e-mail server is not able to initiate a secure connection, i
 
 _Optional (but **highly recommended**):_
 
-7. Create another `TXT` record for `_smtp._tls.<your_domain.tld>` in your domain's DNS to enable reporting (see [RFC 8460](https://datatracker.ietf.org/doc/html/rfc8460)).
+1. Create another `TXT` record for `_smtp._tls.<your_domain.tld>` in your domain's DNS to enable reporting (see [RFC 8460](https://datatracker.ietf.org/doc/html/rfc8460)).
    You may copy & paste this to your DNS provider:
 
    ```dns
