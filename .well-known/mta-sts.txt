@@ -10,12 +10,13 @@ mode: enforce
 #   testing  - Report violations but do not enforce (use for testing)
 #   none     - Disable MTA-STS
 
-mx: mail.lewsion.com
+mx: mx1.forwardemail.net
+mx: mx2.forwardemail.net
 # Primary mail server hostname (must match your DNS MX records).
 # Add additional 'mx:' lines for each secondary mail server if needed.
 # Example:
 # mx: mx2.lewsion.com
 
-max_age: 1209600
+max_age: 604800
 # Policy lifetime in seconds (e.g., 1209600 = 14 days).
 # Increase for production, decrease for testing.
