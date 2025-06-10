@@ -43,4 +43,4 @@ max_age: 86400
 ---
 
 For more details, see:  
-https://datatracker.ietf.org/doc/html/rfc8461
+[RFC 8461 - MTA-STS Specification](https://datatracker.ietf.org/doc/html/rfc8461)
