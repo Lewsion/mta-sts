@@ -1,22 +1,5 @@
-# MTA-STS Policy File for lewsion.com
-# For more information, see: https://tools.ietf.org/html/rfc8461
-
 version: STSv1
-# Policy version. Always 'STSv1' as per RFC 8461.
-
 mode: enforce
-# Policy mode. Possible values:
-#   enforce  - Enforce the policy (recommended for production)
-#   testing  - Report violations but do not enforce (use for testing)
-#   none     - Disable MTA-STS
-
 mx: mx1.forwardemail.net
 mx: mx2.forwardemail.net
-# Primary mail server hostname (must match your DNS MX records).
-# Add additional 'mx:' lines for each secondary mail server if needed.
-# Example:
-# mx: mx2.lewsion.com
-
 max_age: 604800
-# Policy lifetime in seconds (e.g., 1209600 = 14 days).
-# Increase for production, decrease for testing.
