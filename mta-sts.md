@@ -1,7 +1,7 @@
 # Example: `mta-sts.txt`
 
-This is an example of an **MTA-STS policy file** with all possible values.  
-Save this file as `.well-known/mta-sts.txt` and serve it over HTTPS at:  
+This is an example of an **MTA-STS policy file** with all possible values.
+Save this file as `.well-known/mta-sts.txt` and serve it over HTTPS at:
 `https://mta-sts.example/.well-known/mta-sts.txt`
 
 ---
@@ -42,5 +42,5 @@ max_age: 86400
 
 ---
 
-For more details, see:  
+For more details, see:
 [RFC 8461 - MTA-STS Specification](https://datatracker.ietf.org/doc/html/rfc8461)
