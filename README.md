@@ -1,66 +1,113 @@
-<h1 align="center">
-  <br>
-  📩 A Template to host an MTA-STS Policy file on GitHub
-  <br>
-</h1>
+<div align="center">
 
-<h4 align="center">Use this template to host your <i>MTA Strict Transport Security (MTA-STS)</i> <a href="https://datatracker.ietf.org/doc/html/rfc8461">[RFC 8461]</a> policy file on GitHub Pages.</h4>
+# MTA-STS Policy Hosting on GitHub Pages
 
-<p align="center">
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#license">License</a> •
-  <a href="#author">Author</a>
-</p>
+**A simple and effective template for hosting your MTA-STS policy file using GitHub Pages.**
 
-MTA-STS is a security standard to secure e-mail delivery. E-mail servers that send inbound e-mail to your domain will be able to detect that your e-mail server supports SMTP-over-TLS via `STARTTLS` (also known as [Opportunistic TLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)) before opening the actual connection.
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Lewsion/mta-sts/blob/gh-pages/LICENSE.md)
+[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-green.svg)](https://lewsion.github.io/mta-sts/)
 
-In case the sending e-mail server is not able to initiate a secure connection, it will end the connection to enforce transport layer encryption. This mitigates [Man-in-the-middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) DNS and SMTP [downgrade attacks](https://en.wikipedia.org/wiki/Downgrade_attack) that would allow an attacker to read or manipulate e-mail in transit.
+</div>
 
-## How To Use
+---
 
-1. Make sure you are [signed in to GitHub](https://github.com/login). Then click on [**Use this template**](https://github.com/jpawlowski/mta-sts.template/generate) to create a copy to your own GitHub profile (see [GitHub Docs](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)). Don't _clone_ the repository.
-   You may name your repository whatever you like. For simplicity, you can name it `mta-sts.<your_domain.tld>`.
+## 📖 Table of Contents
 
-2. Change the file `.well-known/mta-sts.txt` according to your needs.
+- [About MTA-STS](#about-mta-sts)
+- [🚀 Getting Started](#getting-started)
+- [✅ Prerequisites](#prerequisites)
+- [🔧 Configuration](#configuration)
+- [🧪 Validation](#validation)
+- [🤝 Contributing](#contributing)
+- [📝 License](#license)
+- [📧 Author](#author)
 
-3. Create a `CNAME` record for `mta-sts.<your_domain.tld>` in your domain's DNS that points to `<your_username>.github.io` or `<your_organization>.github.io` and [enable GitHub Pages](https://docs.github.com/articles/using-a-custom-domain-with-github-pages/).
+---
 
-4. Open a browser to `https://mta-sts.<your_domain.tld>` and make sure it does not show any certificate warnings.
+## About MTA-STS
 
-5. Create a `TXT` record for `_mta-sts.<your_domain.tld>` in your domain's DNS to enable the MTA-STS policy for your domain.
+**MTA Strict Transport Security (MTA-STS)** is a security standard that helps to protect email delivery from downgrade and man-in-the-middle attacks. It allows mail servers to declare their ability to receive TLS-secured connections and to specify whether sending mail servers should refuse to deliver to MX hosts that do not offer TLS with a trusted server certificate.
 
-   You may copy & paste this to your DNS provider:
+This template provides a straightforward way to host your MTA-STS policy file on GitHub Pages, making it easy to implement this important security feature for your domain.
 
-   ```dns
-   #HOST       #TTL    #TYPE    #VALUE
-   _mta-sts    3600    TXT      "v=STSv1; id=20220317000000Z"
-   ```
+---
 
-   **Note that you will need to change the `id=` here whenever you make changes to your `mta-sts.txt` policy file.**
+## 🚀 Getting Started
 
-6. Validate your setup, for example by using the [MTA-STS Lookup by MXToolBox](https://mxtoolbox.com/mta-sts.aspx), or looking into your [Hardenize Public Report](https://www.hardenize.com/).
+To get started, you can use this repository as a template to create your own MTA-STS policy hosting repository.
 
-_Optional (but **highly recommended**):_
+1. Click the [**Use this template**](https://github.com/Lewsion/mta-sts/generate) button to create a new repository based on this template.
+2. Choose a name for your new repository (e.g., `mta-sts.yourdomain.com`).
 
-1. Create another `TXT` record for `_smtp._tls.<your_domain.tld>` in your domain's DNS to enable reporting (see [RFC 8460](https://datatracker.ietf.org/doc/html/rfc8460)).
-   You may copy & paste this to your DNS provider:
+---
 
-   ```dns
-   #HOST         #TTL    #TYPE    #VALUE
-   _smtp._tls    3600    TXT      "v=TLSRPTv1; rua=mailto:tls-rua@mailcheck.<your_domain.tld>"
-   ```
+## ✅ Prerequisites
 
-   Note that the e-mail recipient mailbox shall be on a different domain _without_ MTA-STS being configured. This could be a subdomain like `mailcheck.<your_domain.tld>`.
-   It is also quite painful to manually deal with the reports other e-mail providers will send to you. For that particular reason, you may want to consider sending these e-mails to a 3rd-party tool like [Report URI](https://report-uri.com/), [URIports](https://www.uriports.com/), or from other commercial providers.
+Before you can use this template, you will need:
 
-   You probably want this to be the same tool you might use for DMARC reports, like [DMARC Analyzer](https://www.dmarcanalyzer.com/) or [Dmarcian](https://dmarcian.com/).
+- A GitHub account.
+- A domain name for which you want to enable MTA-STS.
+- Access to your domain's DNS records.
 
-## License
+---
 
-[MIT License](https://github.com/jpawlowski/mta-sts.template/blob/gh-pages/LICENSE)
+## 🔧 Configuration
 
-## Author
+1. **Customize the MTA-STS Policy:**
+    - Edit the `.well-known/mta-sts.txt` file to match your mail server configuration.
+    - You will need to update the `mx` values to match your mail server's MX records.
 
-[julian.pawlowski.me](https://julian.pawlowski.me/) &nbsp;&middot;&nbsp;
-GitHub [@jpawlowski](https://github.com/jpawlowski/mta-sts.template) &nbsp;&middot;&nbsp;
-Mastodon [@Loredo@chaos.social](https://chaos.social/@Loredo)
+2. **Set up GitHub Pages:**
+    - In your new repository, go to **Settings > Pages**.
+    - Under **Branch**, select `gh-pages` as the source and click **Save**.
+    - If you are using a custom domain, enter your custom domain name in the **Custom domain** field and click **Save**.
+
+3. **Configure DNS Records:**
+    - Create a `CNAME` record for `mta-sts.yourdomain.com` that points to `<your-username>.github.io`.
+    - Create a `TXT` record for `_mta-sts.yourdomain.com` with the following format:
+
+        ```dns
+        _mta-sts.yourdomain.com. IN TXT "v=STSv1; id=<unique-id>"
+        ```
+
+        - Replace `<unique-id>` with a unique identifier. It is recommended to use the current date and time (e.g., `20250924T120000Z`).
+        - **Important:** You must update the `id` value in your DNS record whenever you make changes to your `mta-sts.txt` file.
+
+4. **(Optional) Enable TLS Reporting:**
+    - Create a `TXT` record for `_smtp._tls.yourdomain.com` to enable TLS reporting:
+
+        ```dns
+        _smtp._tls.yourdomain.com. IN TXT "v=TLSRPTv1; rua=mailto:<reporting-email-address>"
+        ```
+
+        - Replace `<reporting-email-address>` with the email address where you want to receive TLS reports.
+
+---
+
+## 🧪 Validation
+
+After you have configured your MTA-STS policy, you can use the following tools to validate your setup:
+
+- [MXToolBox MTA-STS Lookup](https://mxtoolbox.com/mta-sts.aspx)
+- [Hardenize](https://www.hardenize.com/)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! If you have any suggestions or improvements, please feel free to open an issue or submit a pull request.
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License. See the [LICENSE.md](httpshttps://github.com/Lewsion/mta-sts/blob/gh-pages/LICENSE.md) file for details.
+
+---
+
+## 📧 Author
+
+This template was created by **Julian Pawlowski** and adapted by **ENDRENCE LETERNET**.
+
+- **Julian Pawlowski:** [julian.pawlowski.me](https://julian.pawlowski.me/) | GitHub [@jpawlowski](https://github.com/jpawlowski)
+- **ENDRENCE LETERNET:** [lewsion.com](https://lewsion.com) | GitHub [@Lewsion](https://github.com/Lewsion)
