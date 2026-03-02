@@ -1,5 +1,6 @@
 version: STSv1
 mode: enforce
-mx: mx1.forwardemail.net
-mx: mx2.forwardemail.net
+mx: route1.mx.cloudflare.net
+mx: route2.mx.cloudflare.net
+mx: route3.mx.cloudflare.net
 max_age: 2592000
